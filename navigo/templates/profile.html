@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile | TravelPack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+            --container-width: 90%;
+            --max-container-width: 1400px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f8fafc;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .header-content {
+            max-width: var(--max-container-width);
+            width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(79, 70, 229, 0.1);
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .btn-logout {
+            background: var(--light);
+            color: var(--danger);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        .container {
+            max-width: var(--max-container-width);
+            width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Profile Header Section */
+        .profile-header {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--gray-light);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            z-index: 0;
+        }
+
+        .avatar-container {
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            background: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            overflow: hidden;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-info {
+            flex-grow: 1;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-email {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+        }
+
+        .profile-meta-item i {
+            font-size: 1.1rem;
+        }
+
+        .user-role {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .role-admin {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .role-vendor {
+            background: rgba(16, 185, 129, 0.7);
+        }
+
+        .role-user {
+            background: rgba(156, 163, 175, 0.7);
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-grow: 1;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .stat-content {
+            flex-grow: 1;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Account Details Section */
+        .account-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group label.required::after {
+            content: '*';
+            color: var(--danger);
+            margin-left: 4px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        .form-control:disabled {
+            background: var(--light);
+            color: var(--gray);
+            cursor: not-allowed;
+        }
+
+        .form-actions {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--gray-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light);
+            transform: translateY(-2px);
+        }
+
+        /* Alert Styles */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .alert-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Bookings Section */
+        .bookings-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid var(--gray-light);
+            margin-bottom: 2rem;
+        }
+
+        .listings-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .listing-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-light);
+        }
+
+        .listing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .listing-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .listing-content {
+            padding: 1.5rem;
+        }
+
+        .listing-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .listing-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .listing-label {
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        .listing-value {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-confirmed, .status-approved {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+        }
+
+        .status-pending {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .status-cancelled {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+
+        .status-paid {
+            background: rgba(13, 202, 240, 0.1);
+            color: #0c5460;
+        }
+
+        .status-unpaid {
+            background: rgba(255, 243, 205, 0.1);
+            color: #856404;
+        }
+
+        .listing-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .btn-listing-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex-grow: 1;
+        }
+
+        .btn-view {
+            background: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-view:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-edit {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-edit:hover {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .btn-danger:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: var(--gray);
+            grid-column: 1 / -1;
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--gray-light);
+            margin-bottom: 1rem;
+        }
+
+        .empty-state h3 {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-state p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: var(--max-container-width);
+            width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+            font-size: 1.25rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: var(--max-container-width);
+            width: var(--container-width);
+            margin: 0 auto;
+            border-top: 1px solid var(--gray);
+            padding-top: 1rem;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--primary-light);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .listings-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-meta {
+                justify-content: center;
+            }
+
+            .profile-stats {
+                flex-direction: column;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .listings-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            nav a {
+                padding: 0.5rem;
+            }
+
+            .listings-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            :root {
+                --container-width: 95%;
+            }
+
+            .profile-header {
+                padding: 1.5rem;
+            }
+
+            .profile-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .account-section, .bookings-section {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-header, .account-section, .bookings-section, .alert {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+    <script>
+        function confirmCancel(bookingId) {
+            if (confirm("Are you sure you want to cancel this booking?")) {
+                document.getElementById(`cancel-form-${bookingId}`).submit();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageInput = document.getElementById('profile_image');
+            if (imageInput) {
+                imageInput.addEventListener('change', function(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const avatar = document.querySelector('.avatar img') || document.createElement('img');
+                            avatar.src = e.target.result;
+                            avatar.style.width = '100%';
+                            avatar.style.height = '100%';
+                            avatar.style.objectFit = 'cover';
+                            if (!avatar.parentElement.querySelector('img')) {
+                                document.querySelector('.avatar').innerHTML = '';
+                                document.querySelector('.avatar').appendChild(avatar);
+                            }
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                // Submit form when image is selected
+                imageInput.addEventListener('change', function() {
+                    if (this.files.length > 0) {
+                        document.getElementById('profile-image-form').submit();
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                    <a href="{% url 'home' %}" class="logo">
+           <i class="fas fa-map-marked-alt"></i>
+                <h1>Explore Tours</h1>
+            </div>
+            <nav>
+                <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                    <a href="{% url 'profile' %}">Profile</a>
+               <div class="user-actions">
+                        {% if user.is_staff %}
+                            <a href="{% url 'admin_dashboard' %}" class="btn btn-primary">
+                                <i class="fas fa-tachometer-alt"></i> Admin Dashboard
+                            </a>
+                        {% else %}
+                            {% with is_vendor=False %}
+                                {% for group in user.groups.all %}
+                                    {% if group.name == 'Vendors' %}
+                                        {% with is_vendor=True %}
+                                            <a href="{% url 'vendor_dashboard' %}" class="btn btn-primary">
+                                                <i class="fas fa-store"></i> Vendor Dashboard
+                                            </a>
+                                        {% endwith %}
+                                    {% endif %}
+                                {% endfor %}
+                                {% if not is_vendor %}
+                                    <a href="{% url 'home' %}" class="btn btn-primary">
+                                        <i class="fas fa-home"></i> Browse tours
+                                    </a>
+                                {% endif %}
+                            {% endwith %}
+                        {% endif %}
+
+                    </div>
+                    <a href="{% url 'logout' %}">Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Profile Header Section -->
+        <section class="profile-header">
+            <div class="avatar-container">
+                <div class="avatar">
+                    {% if user.profile.image %}
+                        <img src="{{ user.profile.image.url }}" alt="{{ user.username }}">
+                    {% else %}
+                        <i class="fas fa-user"></i>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">{{ user.username }}</h1>
+                <p class="profile-email">
+                    <i class="fas fa-envelope"></i> {{ user.email }}
+                </p>
+                <div class="profile-meta">
+                    <div class="profile-meta-item">
+                        <i class="fas fa-user-tag"></i>
+                        <span class="user-role
+                            {% if user.is_staff %}role-admin
+                            {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}role-vendor
+                            {% else %}role-user{% endif %}">
+                            {% if user.is_staff %}Administrator
+                            {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}Vendor
+                            {% else %}Traveler{% endif %}
+                        </span>
+                    </div>
+                    <div class="profile-meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Joined {{ user.date_joined|date:"M Y" }}</span>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-suitcase"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">
+                                {% if user.is_staff %}
+                                    -
+                                {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                                    {{ vendor_packages|length }}
+                                {% else %}
+                                    {{ bookings|length }}
+                                {% endif %}
+                            </div>
+                            <div class="stat-label">
+                                {% if user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                                    Packages
+                                {% else %}
+                                    Bookings
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <div class="stat-value">
+                                {% if user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                                    {{ vendor_bookings|length }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </div>
+                            <div class="stat-label">Reservations</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Account Details Section -->
+        <section class="account-section">
+            <h2 class="section-title">Account Details</h2>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-error{% endif %}">
+                        <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i>
+                        {% if message.tags == 'success' %}Profile updated successfully{% else %}{{ message }}{% endif %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if form.errors %}
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Please correct the errors below.
+                </div>
+            {% endif %}
+
+            <form method="post" action="{% url 'profile' %}" id="profile-form">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="id_username">Username</label>
+                        <input type="text" id="id_username" value="{{ user.username }}" class="form-control" disabled>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.email.id_for_label }}" class="{% if form.email.field.required %}required{% endif %}">Email Address</label>
+                        <input type="email" id="{{ form.email.id_for_label }}" name="{{ form.email.name }}"
+                               value="{{ form.email.value|default:'' }}" class="form-control"
+                               {% if form.email.field.required %}required{% endif %}>
+                        {% if form.email.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.email.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.first_name.id_for_label }}">First Name</label>
+                        <input type="text" id="{{ form.first_name.id_for_label }}" name="{{ form.first_name.name }}"
+                               value="{{ form.first_name.value|default:'' }}" class="form-control">
+                        {% if form.first_name.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.first_name.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.last_name.id_for_label }}">Last Name</label>
+                        <input type="text" id="{{ form.last_name.id_for_label }}" name="{{ form.last_name.name }}"
+                               value="{{ form.last_name.value|default:'' }}" class="form-control">
+                        {% if form.last_name.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.last_name.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="{{ form.phone.id_for_label }}">Phone Number</label>
+                        <input type="text" id="{{ form.phone.id_for_label }}" name="{{ form.phone.name }}"
+                               value="{{ form.phone.value|default:'' }}" class="form-control">
+                        {% if form.phone.errors %}
+                            <div class="field-error">
+                                <i class="fas fa-exclamation-circle"></i>
+                                {{ form.phone.errors.0 }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" name="update_profile">
+                        <i class="fas fa-save"></i> Update Profile
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Bookings/Packages Section -->
+     <section class="bookings-section">
+    {% if user.is_authenticated %}
+        <!-- User Bookings -->
+        <h2 class="section-title">Your Bookings</h2>
+        {% if bookings %}
+            <div class="listings-grid">
+                {% for booking in bookings %}
+                    <div class="listing-card">
+                        {% if booking.package.images.exists %}
+                            <img src="{{ booking.package.images.first.image.url }}" alt="{{ booking.package.title }}" class="listing-image">
+                        {% else %}
+                            <img src="https://via.placeholder.com/600x400?text=No+Image" alt="No Image" class="listing-image">
+                        {% endif %}
+                        <div class="listing-content">
+                            <h3 class="listing-title">{{ booking.package.title }}</h3>
+                            <div class="listing-detail">
+                                <span class="listing-label">Destination:</span>
+                                <span class="listing-value">{{ booking.package.destination }}</span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Travel Date:</span>
+                                <span class="listing-value">
+                                    {% if booking.travel_date %}
+                                        {{ booking.travel_date|date:"M d, Y" }}
+                                    {% else %}
+                                        Not specified
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Status:</span>
+                                <span class="listing-value status-badge
+                                    {% if booking.status == 'Confirmed' %}status-confirmed
+                                    {% elif booking.status == 'Pending' %}status-pending
+                                    {% else %}status-cancelled{% endif %}">
+                                    {{ booking.status }}
+                                </span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Payment:</span>
+                                <span class="listing-value status-badge
+                                    {% if booking.payment_status == 'Completed' %}status-paid
+                                    {% else %}status-unpaid{% endif %}">
+                                    {{ booking.payment_status }}
+                                </span>
+                            </div>
+                            <div class="listing-actions">
+                                <a href="{% url 'package_detail' booking.package.id %}" class="btn-listing-action btn-view">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                                {% if booking.status != 'Cancelled' %}
+                                    <form id="cancel-form-{{ booking.id }}" method="post" action="{% url 'cancel_booking' booking_id=booking.id %}">
+                                        {% csrf_token %}
+                                        <button type="button" class="btn-listing-action btn-danger" onclick="confirmCancel({{ booking.id }})">
+                                            <i class="fas fa-times"></i> Cancel
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <i class="fas fa-plane-departure"></i>
+                <h3>No Bookings Yet</h3>
+                <p>You haven't booked any tours yet. Start exploring our amazing packages!</p>
+                <a href="{% url 'home' %}" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Browse Tours
+                </a>
+            </div>
+        {% endif %}
+    {% endif %}
+
+    {% if user.groups.all|length > 0 and user.groups.all.0.name == 'Vendors' %}
+        <!-- Vendor Packages -->
+        <h2 class="section-title">Your Packages</h2>
+        {% if vendor_packages %}
+            <div class="listings-grid">
+                {% for package in vendor_packages %}
+                    <div class="listing-card">
+                        {% if package.images.exists %}
+                            <img src="{{ package.images.first.image.url }}" alt="{{ package.title }}" class="listing-image">
+                        {% else %}
+                            <img src="https://via.placeholder.com/600x400?text=No+Image" alt="No Image" class="listing-image">
+                        {% endif %}
+                        <div class="listing-content">
+                            <h3 class="listing-title">{{ package.title }}</h3>
+                            <div class="listing-detail">
+                                <span class="listing-label">Destination:</span>
+                                <span class="listing-value">{{ package.destination }}</span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Price:</span>
+                                <span class="listing-value">₹{{ package.price }}</span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Status:</span>
+                                <span class="listing-value status-badge
+                                    {% if package.is_approved %}status-confirmed
+                                    {% else %}status-pending{% endif %}">
+                                    {% if package.is_approved %}Approved{% else %}Pending{% endif %}
+                                </span>
+                            </div>
+                            <div class="listing-actions">
+                                <a href="{% url 'package_detail' package.id %}" class="btn-listing-action btn-view">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                                <a href="{% url 'edit_package' package.id %}" class="btn-listing-action btn-edit">
+                                    <i class="fas fa-edit"></i> Edit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <i class="fas fa-suitcase"></i>
+                <h3>No Packages Yet</h3>
+                <p>You haven't created any tour packages yet. Start creating now!</p>
+                <a href="{% url 'create_package' %}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Create Package
+                </a>
+            </div>
+        {% endif %}
+
+        <!-- Vendor Bookings -->
+        <h2 class="section-title" style="margin-top: 3rem;">Bookings for Your Packages</h2>
+        {% if vendor_bookings %}
+            <div class="listings-grid">
+                {% for booking in vendor_bookings %}
+                    <div class="listing-card">
+                        {% if booking.package.images.exists %}
+                            <img src="{{ booking.package.images.first.image.url }}" alt="{{ booking.package.title }}" class="listing-image">
+                        {% else %}
+                            <img src="https://via.placeholder.com/600x400?text=No+Image" alt="No Image" class="listing-image">
+                        {% endif %}
+                        <div class="listing-content">
+                            <h3 class="listing-title">{{ booking.package.title }}</h3>
+                            <div class="listing-detail">
+                                <span class="listing-label">Booked By:</span>
+                                <span class="listing-value">{{ booking.user.username }}</span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Travel Date:</span>
+                                <span class="listing-value">
+                                    {% if booking.travel_date %}
+                                        {{ booking.travel_date|date:"M d, Y" }}
+                                    {% else %}
+                                        Not specified
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Status:</span>
+                                <span class="listing-value status-badge
+                                    {% if booking.status == 'Confirmed' %}status-confirmed
+                                    {% elif booking.status == 'Pending' %}status-pending
+                                    {% else %}status-cancelled{% endif %}">
+                                    {{ booking.status }}
+                                </span>
+                            </div>
+                            <div class="listing-detail">
+                                <span class="listing-label">Payment:</span>
+                                <span class="listing-value status-badge
+                                    {% if booking.payment_status == 'Completed' %}status-paid
+                                    {% else %}status-unpaid{% endif %}">
+                                    {{ booking.payment_status }}
+                                </span>
+                            </div>
+                            <div class="listing-actions">
+                                <a href="{% url 'package_detail' booking.package.id %}" class="btn-listing-action btn-view">
+                                    <i class="fas fa-eye"></i> View
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <i class="fas fa-ticket-alt"></i>
+                <h3>No Bookings Yet</h3>
+                <p>No one has booked your packages yet.</p>
+            </div>
+        {% endif %}
+    {% endif %}
+</section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>TravelPack</h3>
+                <p>Your trusted partner for unforgettable travel experiences around the world.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="{% url 'home' %}">Home</a>
+                    <a href="#featured">Featured Packages</a>
+                    <a href="#">Destinations</a>
+                    <a href="#">Special Offers</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <div class="footer-links">
+                    <a href="#">Contact Us</a>
+                    <a href="#">FAQs</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 TravelPack. All rights reserved.</p>
+            <p>
+                <a href="#">Terms & Conditions</a> |
+                <a href="#">Privacy Policy</a> |
+                <a href="#">About Us</a>
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

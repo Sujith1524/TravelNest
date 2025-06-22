@@ -1,0 +1,334 @@
+Watching for file changes with StatReloader
+Session data corrupted
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Not Found: /accounts/login/
+Redirecting /accounts/logout/ to /logout/
+Session data corrupted
+Not Found: /media/packages/wp1928238_QQTUAOk.jpg
+Not Found: /media/packages/wp1928238_HSJedNJ.jpg
+Not Found: /media/packages/wp1928238_Q8JMks1.jpg
+Not Found: /media/packages/wp1928238_LGFNU4m.jpg
+Not Found: /media/packages/wp1928238_u9Cxda2.jpg
+Not Found: /media/packages/wp7333756.webp
+Not Found: /media/packages/OIP.jpg
+Not Found: /media/packages/wp1928238_Q8JMks1.jpg
+Not Found: /media/packages/wp1928238_QQTUAOk.jpg
+Not Found: /media/packages/wp1928238_LGFNU4m.jpg
+Not Found: /media/packages/wp1928238_HSJedNJ.jpg
+Not Found: /media/packages/wp1928238_u9Cxda2.jpg
+Not Found: /media/packages/wp7333756.webp
+Not Found: /media/packages/OIP.jpg
+Not Found: /media/packages/wp1928238_Q8JMks1.jpg
+Not Found: /media/packages/wp1928238_QQTUAOk.jpg
+Not Found: /media/packages/wp1928238_LGFNU4m.jpg
+Not Found: /media/packages/wp1928238_HSJedNJ.jpg
+Not Found: /media/packages/wp1928238_u9Cxda2.jpg
+Not Found: /media/packages/wp7333756.webp
+Not Found: /media/packages/OIP.jpg
+Not Found: /media/packages/wp1928238_Q8JMks1.jpg
+Not Found: /media/packages/wp1928238_Q8JMks1.jpg
+Not Found: /media/packages/wp1928238_QQTUAOk.jpg
+Not Found: /media/packages/wp1928238_LGFNU4m.jpg
+Not Found: /media/packages/wp1928238_HSJedNJ.jpg
+Not Found: /media/packages/wp1928238_u9Cxda2.jpg
+Not Found: /media/packages/wp7333756.webp
+Not Found: /media/packages/OIP.jpg
+C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\tour_management\settings.py changed, reloading.
+INFO 2025-06-16 21:09:27,038 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:12:42,723 autoreload Watching for file changes with StatReloader
+WARNING 2025-06-16 21:12:48,478 base Session data corrupted
+WARNING 2025-06-16 21:12:51,357 base Session data corrupted
+WARNING 2025-06-16 21:13:00,242 base Session data corrupted
+DEBUG 2025-06-16 21:13:31,289 forms Cleaning travel_date: 2025-01-05
+WARNING 2025-06-16 21:13:31,289 forms Travel date 2025-01-05 is in the past.
+DEBUG 2025-06-16 21:17:08,705 Image Importing AvifImagePlugin
+DEBUG 2025-06-16 21:17:08,706 Image Importing BlpImagePlugin
+DEBUG 2025-06-16 21:17:08,708 Image Importing BmpImagePlugin
+DEBUG 2025-06-16 21:17:08,708 Image Importing BufrStubImagePlugin
+DEBUG 2025-06-16 21:17:08,709 Image Importing CurImagePlugin
+DEBUG 2025-06-16 21:17:08,710 Image Importing DcxImagePlugin
+DEBUG 2025-06-16 21:17:08,712 Image Importing DdsImagePlugin
+DEBUG 2025-06-16 21:17:08,717 Image Importing EpsImagePlugin
+DEBUG 2025-06-16 21:17:08,719 Image Importing FitsImagePlugin
+DEBUG 2025-06-16 21:17:08,720 Image Importing FliImagePlugin
+DEBUG 2025-06-16 21:17:08,721 Image Importing FpxImagePlugin
+DEBUG 2025-06-16 21:17:08,721 Image Image: failed to import FpxImagePlugin: No module named 'olefile'
+DEBUG 2025-06-16 21:17:08,721 Image Importing FtexImagePlugin
+DEBUG 2025-06-16 21:17:08,721 Image Importing GbrImagePlugin
+DEBUG 2025-06-16 21:17:08,721 Image Importing GifImagePlugin
+DEBUG 2025-06-16 21:17:08,721 Image Importing GribStubImagePlugin
+DEBUG 2025-06-16 21:17:08,727 Image Importing Hdf5StubImagePlugin
+DEBUG 2025-06-16 21:17:08,728 Image Importing IcnsImagePlugin
+DEBUG 2025-06-16 21:17:08,730 Image Importing IcoImagePlugin
+DEBUG 2025-06-16 21:17:08,730 Image Importing ImImagePlugin
+DEBUG 2025-06-16 21:17:08,734 Image Importing ImtImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Importing IptcImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Importing JpegImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Importing Jpeg2KImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Importing McIdasImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Importing MicImagePlugin
+DEBUG 2025-06-16 21:17:08,735 Image Image: failed to import MicImagePlugin: No module named 'olefile'
+DEBUG 2025-06-16 21:17:08,735 Image Importing MpegImagePlugin
+DEBUG 2025-06-16 21:17:08,741 Image Importing MpoImagePlugin
+DEBUG 2025-06-16 21:17:08,746 Image Importing MspImagePlugin
+DEBUG 2025-06-16 21:17:08,747 Image Importing PalmImagePlugin
+DEBUG 2025-06-16 21:17:08,750 Image Importing PcdImagePlugin
+DEBUG 2025-06-16 21:17:08,750 Image Importing PcxImagePlugin
+DEBUG 2025-06-16 21:17:08,750 Image Importing PdfImagePlugin
+DEBUG 2025-06-16 21:17:08,755 Image Importing PixarImagePlugin
+DEBUG 2025-06-16 21:17:08,763 Image Importing PngImagePlugin
+DEBUG 2025-06-16 21:17:08,763 Image Importing PpmImagePlugin
+DEBUG 2025-06-16 21:17:08,763 Image Importing PsdImagePlugin
+DEBUG 2025-06-16 21:17:08,765 Image Importing QoiImagePlugin
+DEBUG 2025-06-16 21:17:08,765 Image Importing SgiImagePlugin
+DEBUG 2025-06-16 21:17:08,765 Image Importing SpiderImagePlugin
+DEBUG 2025-06-16 21:17:08,770 Image Importing SunImagePlugin
+DEBUG 2025-06-16 21:17:08,770 Image Importing TgaImagePlugin
+DEBUG 2025-06-16 21:17:08,772 Image Importing TiffImagePlugin
+DEBUG 2025-06-16 21:17:08,772 Image Importing WebPImagePlugin
+DEBUG 2025-06-16 21:17:08,799 Image Importing WmfImagePlugin
+DEBUG 2025-06-16 21:17:08,799 Image Importing XbmImagePlugin
+DEBUG 2025-06-16 21:17:08,803 Image Importing XpmImagePlugin
+DEBUG 2025-06-16 21:17:08,805 Image Importing XVThumbImagePlugin
+ERROR 2025-06-16 21:17:08,868 log Internal Server Error: /vendor/package/create/
+Traceback (most recent call last):
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+MySQLdb.IntegrityError: (1364, "Field 'created_at' doesn't have a default value")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\contrib\auth\decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py", line 254, in create_package
+    package.save()
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\base.py", line 902, in save
+    self.save_base(
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\models\sql\compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\django\db\backends\mysql\base.py", line 76, in execute
+    return self.cursor.execute(query, args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\cursors.py", line 179, in execute
+    res = self._query(mogrified_query)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\cursors.py", line 330, in _query
+    db.query(q)
+  File "C:\Users\Hp\AppData\Local\Programs\Python\Python312\Lib\site-packages\MySQLdb\connections.py", line 280, in query
+    _mysql.connection.query(self, query)
+django.db.utils.IntegrityError: (1364, "Field 'created_at' doesn't have a default value")
+INFO 2025-06-16 21:19:44,485 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\models.py changed, reloading.
+INFO 2025-06-16 21:19:45,062 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:20:02,344 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\admin.py changed, reloading.
+INFO 2025-06-16 21:20:02,907 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:21:24,190 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 21:25:19,203 Image Importing AvifImagePlugin
+DEBUG 2025-06-16 21:25:19,203 Image Importing BlpImagePlugin
+DEBUG 2025-06-16 21:25:19,209 Image Importing BmpImagePlugin
+DEBUG 2025-06-16 21:25:19,209 Image Importing BufrStubImagePlugin
+DEBUG 2025-06-16 21:25:19,210 Image Importing CurImagePlugin
+DEBUG 2025-06-16 21:25:19,210 Image Importing DcxImagePlugin
+DEBUG 2025-06-16 21:25:19,210 Image Importing DdsImagePlugin
+DEBUG 2025-06-16 21:25:19,217 Image Importing EpsImagePlugin
+DEBUG 2025-06-16 21:25:19,221 Image Importing FitsImagePlugin
+DEBUG 2025-06-16 21:25:19,221 Image Importing FliImagePlugin
+DEBUG 2025-06-16 21:25:19,223 Image Importing FpxImagePlugin
+DEBUG 2025-06-16 21:25:19,225 Image Image: failed to import FpxImagePlugin: No module named 'olefile'
+DEBUG 2025-06-16 21:25:19,225 Image Importing FtexImagePlugin
+DEBUG 2025-06-16 21:25:19,225 Image Importing GbrImagePlugin
+DEBUG 2025-06-16 21:25:19,229 Image Importing GifImagePlugin
+DEBUG 2025-06-16 21:25:19,229 Image Importing GribStubImagePlugin
+DEBUG 2025-06-16 21:25:19,231 Image Importing Hdf5StubImagePlugin
+DEBUG 2025-06-16 21:25:19,232 Image Importing IcnsImagePlugin
+DEBUG 2025-06-16 21:25:19,236 Image Importing IcoImagePlugin
+DEBUG 2025-06-16 21:25:19,239 Image Importing ImImagePlugin
+DEBUG 2025-06-16 21:25:19,239 Image Importing ImtImagePlugin
+DEBUG 2025-06-16 21:25:19,239 Image Importing IptcImagePlugin
+DEBUG 2025-06-16 21:25:19,244 Image Importing JpegImagePlugin
+DEBUG 2025-06-16 21:25:19,244 Image Importing Jpeg2KImagePlugin
+DEBUG 2025-06-16 21:25:19,244 Image Importing McIdasImagePlugin
+DEBUG 2025-06-16 21:25:19,244 Image Importing MicImagePlugin
+DEBUG 2025-06-16 21:25:19,248 Image Image: failed to import MicImagePlugin: No module named 'olefile'
+DEBUG 2025-06-16 21:25:19,248 Image Importing MpegImagePlugin
+DEBUG 2025-06-16 21:25:19,248 Image Importing MpoImagePlugin
+DEBUG 2025-06-16 21:25:19,257 Image Importing MspImagePlugin
+DEBUG 2025-06-16 21:25:19,258 Image Importing PalmImagePlugin
+DEBUG 2025-06-16 21:25:19,261 Image Importing PcdImagePlugin
+DEBUG 2025-06-16 21:25:19,261 Image Importing PcxImagePlugin
+DEBUG 2025-06-16 21:25:19,261 Image Importing PdfImagePlugin
+DEBUG 2025-06-16 21:25:19,270 Image Importing PixarImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing PngImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing PpmImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing PsdImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing QoiImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing SgiImagePlugin
+DEBUG 2025-06-16 21:25:19,273 Image Importing SpiderImagePlugin
+DEBUG 2025-06-16 21:25:19,278 Image Importing SunImagePlugin
+DEBUG 2025-06-16 21:25:19,279 Image Importing TgaImagePlugin
+DEBUG 2025-06-16 21:25:19,279 Image Importing TiffImagePlugin
+DEBUG 2025-06-16 21:25:19,279 Image Importing WebPImagePlugin
+DEBUG 2025-06-16 21:25:19,282 Image Importing WmfImagePlugin
+DEBUG 2025-06-16 21:25:19,284 Image Importing XbmImagePlugin
+DEBUG 2025-06-16 21:25:19,287 Image Importing XpmImagePlugin
+DEBUG 2025-06-16 21:25:19,288 Image Importing XVThumbImagePlugin
+DEBUG 2025-06-16 21:31:11,049 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 21:31:11,147 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 21:31:13,254 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 21:31:13,254 connectionpool Starting new HTTPS connection (2): api.razorpay.com:443
+DEBUG 2025-06-16 21:31:14,131 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:31:14,131 views Created Razorpay order: order_QhvT2DR3d4qOcl for package 15
+ERROR 2025-06-16 21:31:14,152 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+DEBUG 2025-06-16 21:31:14,380 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 21:31:14,834 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:31:14,834 views Created Razorpay order: order_QhvT2rR6Eoikjn for package 15
+ERROR 2025-06-16 21:31:14,834 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+DEBUG 2025-06-16 21:31:16,015 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:31:16,015 views Created Razorpay order: order_QhvT3MRZ6Er7im for package 15
+ERROR 2025-06-16 21:31:16,019 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+DEBUG 2025-06-16 21:31:23,751 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 21:31:24,070 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:31:24,070 views Created Razorpay order: order_QhvTD4q9R8nUyx for package 15
+ERROR 2025-06-16 21:31:24,071 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 21:36:50,322 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\forms.py changed, reloading.
+INFO 2025-06-16 21:36:51,295 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:37:05,795 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 21:37:06,465 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:38:16,593 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 21:38:45,777 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 21:38:45,882 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 21:38:46,648 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:38:46,648 views Created Razorpay order: order_Qhvb0NPRvgbstg for package 15
+ERROR 2025-06-16 21:38:46,651 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 21:44:08,025 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 21:49:13,526 forms Cleaning travel_date: 2025-06-19
+DEBUG 2025-06-16 21:49:13,643 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 21:49:15,922 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 21:49:15,922 views Created Razorpay order: order_Qhvm5HdKq1sjqn for package 15
+ERROR 2025-06-16 21:49:15,926 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+DEBUG 2025-06-16 21:51:25,228 forms Cleaning travel_date: 2025-06-20
+DEBUG 2025-06-16 21:51:25,353 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 215
+INFO 2025-06-16 21:51:25,355 views Created Razorpay order: order_QhvoMXzu31dQkK for package 13
+ERROR 2025-06-16 21:51:25,357 views Order creation failed for package 13: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 21:52:05,302 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 21:52:06,087 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 21:52:28,524 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['wzcGPkkFyYUXpOogqQI23j75cd3fDGeuz8V9GzcQCJEchL2qQzHw9SjirHAq0543'], 'number_of_persons': ['1'], 'travel_date': ['2025-06-19'], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 21:52:28,529 forms Cleaning travel_date: 2025-06-19
+DEBUG 2025-06-16 21:52:28,531 views Form data - Number of Persons: 1, Travel Date: 2025-06-19, Promo Code: SUMMER10
+DEBUG 2025-06-16 21:52:28,532 views Guest 1: Name=Sujith M, Age=21
+DEBUG 2025-06-16 21:52:28,532 views Creating Razorpay order with data: {'amount': 2250090, 'currency': 'INR', 'payment_capture': '1'}
+DEBUG 2025-06-16 21:52:28,630 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 21:52:29,332 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 215
+INFO 2025-06-16 21:52:29,334 views Created Razorpay order: order_QhvpUMoEvGG00n for package 14
+ERROR 2025-06-16 21:52:29,334 views Order creation failed for package 14: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 21:56:27,441 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 21:56:28,310 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 21:56:43,140 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 21:57:20,372 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['TTry2NETt1ArOALp8LdYxlEwS9tsfnjYWsa1T2w4xMkGGxpzyucsDUQJ7D0DCM9x'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['']}>
+DEBUG 2025-06-16 21:57:20,404 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li><li>__all__<ul class="errorlist nonfield"><li>Name for guest 1 is required.</li><li>Age for guest 1 is required.</li></ul></li></ul>
+DEBUG 2025-06-16 21:57:22,925 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['PD5vZQRF66a3QcP7wcxjnlNFwARQqE4dScOYQ5JQaRUiI9thWVwNtUZSL4o1N3UM'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['']}>
+DEBUG 2025-06-16 21:57:22,927 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li><li>__all__<ul class="errorlist nonfield"><li>Name for guest 1 is required.</li><li>Age for guest 1 is required.</li></ul></li></ul>
+DEBUG 2025-06-16 21:57:24,966 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['siuxGeN1SXFZnhXdearij2DIAUJ9fZMmvRd0xtFcWIpefeBnETqMpBPVPogkCoCV'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['']}>
+DEBUG 2025-06-16 21:57:24,966 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li><li>__all__<ul class="errorlist nonfield"><li>Name for guest 1 is required.</li><li>Age for guest 1 is required.</li></ul></li></ul>
+DEBUG 2025-06-16 21:57:26,759 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['QsQOYZzWPFsaxGtirM1ZlBPAxkvHVmQET1zhPer7TqcppD7sRv0tra1NMO2SiLGd'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['']}>
+DEBUG 2025-06-16 21:57:26,759 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li><li>__all__<ul class="errorlist nonfield"><li>Name for guest 1 is required.</li><li>Age for guest 1 is required.</li></ul></li></ul>
+INFO 2025-06-16 22:00:50,852 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 22:01:25,323 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['FUhs58lha26H3xZAgnEhK2S1IUmPPy0DIt0VWndseNQWVuDKG6DLQB4eXoT0cXQc'], 'number_of_persons': ['1'], 'travel_date': ['2025-06-19'], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:01:25,326 forms Cleaning travel_date: 2025-06-19
+DEBUG 2025-06-16 22:01:25,326 views Form data - Number of Persons: 1, Travel Date: 2025-06-19, Promo Code: SUMMER10
+ERROR 2025-06-16 22:01:25,326 views Order creation failed for package 15: Cannot resolve keyword 'expiry_date' into field. Choices are: code, description, discount_percentage, id, is_active, valid_until
+INFO 2025-06-16 22:04:02,291 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 22:04:03,378 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 22:04:13,649 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 22:04:37,649 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['SlzAxIq6CA7ozyo63QIizggBlKTWid0JVUi3oXihGlRDrv2gtzHMFPsOAeq7FCQi'], 'number_of_persons': ['1'], 'travel_date': ['2025-06-17'], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:04:37,653 forms Cleaning travel_date: 2025-06-17
+DEBUG 2025-06-16 22:04:37,653 views Form data - Number of Persons: 1, Travel Date: 2025-06-17, Promo Code: SUMMER10
+DEBUG 2025-06-16 22:04:37,659 views Applied promo code SUMMER10: Discount=500.1, New Amount=4500.9
+DEBUG 2025-06-16 22:04:37,659 views Guest 1: Name=Sujith M, Age=21
+DEBUG 2025-06-16 22:04:37,659 views Creating Razorpay order with data: {'amount': 450089, 'currency': 'INR', 'payment_capture': '1'}
+DEBUG 2025-06-16 22:04:37,754 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 22:04:40,077 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 22:04:40,079 views Created Razorpay order: order_Qhw2LvUvGXlUpa for package 15
+ERROR 2025-06-16 22:04:40,080 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 22:06:38,434 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 22:06:39,033 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 22:06:50,497 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 22:07:05,528 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['bboDrKICiR7G6xLIA6dkYTDsK7bkHXjJeK76iZANmCRVYupS0PcO4sPFZBIv4m9i'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:07:05,531 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li></ul>
+DEBUG 2025-06-16 22:07:13,819 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['D05FX0GCdcrWjXsLCJJiFXwmGMY4LXZ7GzO8OfyNhXbbbU6V2sIMLwIzVgvf8mPG'], 'number_of_persons': ['1'], 'travel_date': [''], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:07:13,823 views Form errors: <ul class="errorlist"><li>travel_date<ul class="errorlist" id="id_travel_date_error"><li>This field is required.</li></ul></li></ul>
+DEBUG 2025-06-16 22:07:26,147 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['WfntwsgrD3khBTkiCl9UQNLed514NfLTZO6WnH8CHO4wtQYs248oWmXrszyfaEBs'], 'number_of_persons': ['1'], 'travel_date': ['2025-06-19'], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:07:26,151 forms Cleaning travel_date: 2025-06-19
+DEBUG 2025-06-16 22:07:26,151 views Form data - Number of Persons: 1, Travel Date: 2025-06-19, Promo Code: SUMMER10
+DEBUG 2025-06-16 22:07:26,157 views Applied promo code SUMMER10: Discount=500.1, New Amount=4500.9
+DEBUG 2025-06-16 22:07:26,157 views Guest 1: Name=Sujith M, Age=21
+DEBUG 2025-06-16 22:07:26,157 views Creating Razorpay order with data: {'amount': 450089, 'currency': 'INR', 'payment_capture': '1'}
+DEBUG 2025-06-16 22:07:26,259 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 22:07:28,343 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 22:07:28,343 views Created Razorpay order: order_Qhw5JVAplwISKt for package 15
+ERROR 2025-06-16 22:07:28,349 views Order creation failed for package 15: Booking() got unexpected keyword arguments: 'booking_date'
+INFO 2025-06-16 22:09:27,699 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.
+INFO 2025-06-16 22:09:28,620 autoreload Watching for file changes with StatReloader
+INFO 2025-06-16 22:10:03,022 autoreload Watching for file changes with StatReloader
+DEBUG 2025-06-16 22:10:18,843 views Received POST data: <QueryDict: {'csrfmiddlewaretoken': ['mg3dBjtCWuEOadXi9jD3gKNeC0ABPeF8pPMGsylN0fo32aBsz2CxmjZrRu7McDvH'], 'number_of_persons': ['1'], 'travel_date': ['2025-06-19'], 'promo_code': ['SUMMER10'], 'guest_name_0': ['Sujith M'], 'guest_age_0': ['21']}>
+DEBUG 2025-06-16 22:10:18,850 forms Cleaning travel_date: 2025-06-19
+DEBUG 2025-06-16 22:10:18,850 views Form data - Number of Persons: 1, Travel Date: 2025-06-19, Promo Code: SUMMER10
+DEBUG 2025-06-16 22:10:18,850 views Applied promo code SUMMER10: Discount=500.1, New Amount=4500.9
+DEBUG 2025-06-16 22:10:18,850 views Guest 1: Name=Sujith M, Age=21
+DEBUG 2025-06-16 22:10:18,850 views Creating Razorpay order with data: {'amount': 450089, 'currency': 'INR', 'payment_capture': '1'}
+DEBUG 2025-06-16 22:10:18,955 connectionpool Starting new HTTPS connection (1): api.razorpay.com:443
+DEBUG 2025-06-16 22:10:19,800 connectionpool https://api.razorpay.com:443 "POST /v1/orders HTTP/1.1" 200 213
+INFO 2025-06-16 22:10:19,800 views Created Razorpay order: order_Qhw8KrjSr4EREH for package 15
+ERROR 2025-06-16 22:10:19,800 views Order creation failed for package 15: (1364, "Field 'booking_date' doesn't have a default value")
+INFO 2025-06-16 22:12:11,779 autoreload C:\Users\Hp\PycharmProjects\SLBSDjangoProject\tour_management\navigo\views.py changed, reloading.

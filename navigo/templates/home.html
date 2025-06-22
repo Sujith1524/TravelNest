@@ -1,0 +1,1794 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Tours - Premium Travel Experiences</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;zz
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 8px;
+            margin-left: 1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                        url('https://images.unsplash.com/photo-1542321993-8fc36217e26d?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 90vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #fff, transparent);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Search Form */
+        .search-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            max-width: 1000px;
+            margin: -80px auto 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .search-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .search-group {
+            position: relative;
+        }
+
+        .search-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .search-group input,
+        .search-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .search-group input:focus,
+        .search-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-btn {
+            align-self: flex-end;
+        }
+
+        .error-message {
+            color: #e53e3e;
+            font-size: 0.8rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        .search-group input:invalid,
+        .search-group select:invalid {
+            border-color: #e53e3e;
+        }
+
+        .search-group input:valid,
+        .search-group select:valid {
+            border-color: #38a169;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: #e67e22;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            font-size: 1.1rem;
+            padding: 16px 32px;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-accent:hover {
+            background: #0d9488;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Categories Section */
+        .categories {
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
+        }
+
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-item {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+
+        .category-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .category-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-item p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Package Grid */
+        .package-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            position: relative;
+        }
+
+        .package-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .package-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .package-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+        }
+
+        .package-content {
+            padding: 1.75rem;
+        }
+
+        .package-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .package-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .package-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .package-meta i {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .package-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .package-price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--gray);
+        }
+
+        .package-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .package-actions .btn {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Featured Section */
+        .featured {
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            color: white;
+        }
+
+        .benefits::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .benefits .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefits .section-title {
+            color: white;
+        }
+
+        .benefits .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Testimonials */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '\201C';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(37, 99, 235, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-text {
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .rating {
+            color: var(--secondary);
+            margin-top: 0.3rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            background: white;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: #f8fafc;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .newsletter::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        /* App Promotion */
+        .app-promo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            background: linear-gradient(to right, #ffffff, #f8fafc);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            margin: 4rem 0;
+        }
+
+        .app-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .app-content p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .app-badges {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .app-badge {
+            background: var(--dark);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .app-badge i {
+            font-size: 1.3rem;
+        }
+
+        .app-badge:hover {
+            background: #334155;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .app-image {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .app-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            transform: rotateY(-15deg);
+            transition: all 0.5s ease;
+        }
+
+        .app-image:hover img {
+            transform: rotateY(0deg);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%232c3e50" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%232c3e50" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%232c3e50"/></svg>');
+            background-size: cover;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover i {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content h2 {
+                font-size: 3.5rem;
+            }
+
+            .app-promo {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .app-badges {
+                justify-content: center;
+            }
+
+            .app-image {
+                order: -1;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem 20px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-cta {
+                margin-left: 0;
+            }
+
+            .hero {
+                height: auto;
+                padding: 6rem 0;
+                min-height: auto;
+            }
+
+            .hero-content h2 {
+                font-size: 2.8rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .search-form {
+                margin-top: 0;
+                position: static;
+            }
+
+            .search-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-btn {
+                margin-top: 1rem;
+            }
+
+            .package-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .package-actions {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .category-list {
+                grid-template-columns: 1fr;
+            }
+
+            .app-promo, .newsletter {
+                padding: 2rem 1.5rem;
+            }
+
+            .app-badges {
+                flex-direction: column;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .footer-links a {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="{% url 'home' %}" class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Explore Tours</span>
+            </a>
+            <nav>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="#featured">Packages</a>
+                <a href="{% url 'about' %}">About Us</a>
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                        <a href="{% url 'vendor_dashboard' %}">Vendor Dashboard</a>
+                    {% endif %}
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'logout' %}" class="nav-cta">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}" class="nav-cta">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Discover Your Perfect Journey</h2>
+            <p>Experience the world's most breathtaking destinations with our carefully curated travel packages</p>
+            <a href="#featured" class="btn btn-accent">Explore Tours <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <!-- Search Form -->
+    <div class="container">
+        <form class="search-form" id="searchForm">
+            <div class="search-grid">
+                <div class="search-group">
+                    <label for="destination"><i class="fas fa-map-marker-alt"></i> Destination</label>
+                    <input type="text" id="destination" placeholder="Where to?" required>
+                    <div class="error-message" id="destinationError"></div>
+                </div>
+                <div class="search-group">
+                    <label for="date"><i class="far fa-calendar-alt"></i> Travel Date</label>
+                    <input type="date" id="date" required>
+                    <div class="error-message" id="dateError"></div>
+                </div>
+                <div class="search-group">
+                    <label for="duration"><i class="far fa-clock"></i> Duration</label>
+                    <select id="duration" required>
+                        <option value="">Any duration</option>
+                        <option value="weekend">Weekend Getaway</option>
+                        <option value="1week">1 Week</option>
+                        <option value="2week">2 Weeks</option>
+                        <option value="month">1 Month+</option>
+                    </select>
+                    <div class="error-message" id="durationError"></div>
+                </div>
+                <div class="search-group search-btn">
+                    <button type="button" id="searchBtn" class="btn btn-primary" style="width: 100%;">Search <i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Explore by Category -->
+    <section class="section categories">
+        <div class="container">
+            <h2 class="section-title">Explore by Category</h2>
+            <p class="section-subtitle">Find your perfect tour based on your travel style and preferences</p>
+
+            <div class="category-list">
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Honeymoon</h3>
+                    <p>Romantic getaways for couples</p>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Family Tours</h3>
+                    <p>Fun adventures for all ages</p>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-hiking"></i>
+                    </div>
+                    <h3>Adventure Trips</h3>
+                    <p>Thrilling experiences</p>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>International Tours</h3>
+                    <p>Explore foreign lands</p>
+                </div>
+                <div class="category-item">
+                    <div class="category-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Beach Vacations</h3>
+                    <p>Relax by the ocean</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Packages -->
+    <section class="section featured" id="featured">
+        <div class="container">
+            <h2 class="section-title">Featured Packages</h2>
+            <p class="section-subtitle">Our most popular tours loved by travelers worldwide</p>
+
+            <div class="package-grid">
+                {% for package in top_packages %}
+                    <div class="package-card">
+                        <div class="package-badge">Popular</div>
+                        <div class="package-image" style="background-image: url('{% if package.images.first %}{{ package.images.first.image.url }}{% else %}https://source.unsplash.com/600x400/?{{ package.destination|slugify }}{% endif %}')"></div>
+                        <div class="package-content">
+                            <h3>{{ package.title }}</h3>
+                            <div class="package-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> {{ package.destination }}</span>
+                                <span><i class="far fa-clock"></i> {{ package.duration }} days</span>
+                            </div>
+                            <div class="package-price">₹{{ package.price }} <span>per person</span></div>
+                            <p>{{ package.description|truncatewords:20 }}</p>
+                            <div class="package-actions">
+                                <a href="{% url 'package_detail' package.id %}" class="btn btn-outline">View Details</a>
+                                <a href="{% url 'book_page' package.id %}" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>10,000+</h3>
+                    <p>Happy Travelers</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Destinations</p>
+                </div>
+                <div class="stat-item">
+                    <h3>98%</h3>
+                    <p>Positive Reviews</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24/7</h3>
+                    <p>Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget-Friendly -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Budget-Friendly Getaways</h2>
+            <p class="section-subtitle">Amazing experiences that won't break the bank</p>
+
+            <div class="package-grid">
+                {% for package in budget_packages %}
+                    <div class="package-card">
+                        <div class="package-badge">Great Value</div>
+                        <div class="package-image" style="background-image: url('{% if package.images.first %}{{ package.images.first.image.url }}{% else %}https://source.unsplash.com/600x400/?{{ package.destination|slugify }}{% endif %}')"></div>
+                        <div class="package-content">
+                            <h3>{{ package.title }}</h3>
+                            <div class="package-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> {{ package.destination }}</span>
+                                <span><i class="far fa-clock"></i> {{ package.duration }} days</span>
+                            </div>
+                            <div class="package-price">₹{{ package.price }} <span>per person</span></div>
+                            <div class="package-actions">
+                                <a href="{% url 'package_detail' package.id %}" class="btn btn-outline">View Details</a>
+                                <a href="{% url 'book_page' package.id %}" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- All Packages -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">All Available Packages</h2>
+            <p class="section-subtitle">Browse our complete collection of travel experiences</p>
+
+            <div class="package-grid">
+                {% for package in packages %}
+                    <div class="package-card">
+                        <div class="package-image" style="background-image: url('{% if package.images.first %}{{ package.images.first.image.url }}{% else %}https://source.unsplash.com/600x400/?{{ package.destination|slugify }}{% endif %}')"></div>
+                        <div class="package-content">
+                            <h3>{{ package.title }}</h3>
+                            <div class="package-meta">
+                                <span><i class="fas fa-map-marker-alt"></i> {{ package.destination }}</span>
+                                <span><i class="far fa-clock"></i> {{ package.duration }} days</span>
+                            </div>
+                            <div class="package-price">₹{{ package.price }} <span>per person</span></div>
+                            <div class="package-actions">
+                                <a href="{% url 'package_detail' package.id %}" class="btn btn-outline">View Details</a>
+                                <a href="{% url 'book_page' package.id %}" class="btn btn-primary">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <p class="section-subtitle">We're committed to providing exceptional travel experiences</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Trusted Experience</h3>
+                    <p>Over 15 years in the travel industry with thousands of satisfied customers.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Unique Itineraries</h3>
+                    <p>Carefully crafted tours that go beyond the typical tourist experience.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Our travel experts are available round the clock to assist you.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure & Safe</h3>
+                    <p>Your safety and security are our top priorities throughout your journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Traveler Testimonials</h2>
+            <p class="section-subtitle">What our customers say about their experiences</p>
+
+            <div class="testimonial-grid">
+                {% for review in testimonials %}
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">{{ review.comment }}</p>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/{% cycle 'women' 'men' %}/{% cycle '12' '23' '45' '67' '89' '34' '56' '78' '90' '11' %}.jpg" alt="{{ review.user_name }}" class="author-avatar">
+                            <div class="author-info">
+                                <h4>{{ review.user_name }}</h4>
+                                <p>{{ review.tour_title }}</p>
+                                <div class="rating">
+                                    {% for i in "12345" %}
+                                        {% if forloop.counter <= review.rating %}
+                                            <i class="fas fa-star"></i>
+                                        {% else %}
+                                            <i class="far fa-star"></i>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% empty %}
+                    <p>No testimonials yet. Be the first to leave one!</p>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Find answers to common questions about our tours</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I book a tour?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Select your desired package and click "Book Now" to proceed with the booking process. You'll need to provide traveler details and payment information to complete your reservation.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I customize my itinerary?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer customizable packages for most destinations. Contact our travel consultants to discuss your specific requirements and we'll create a personalized itinerary just for you.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is the cancellation policy?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Cancellation policies vary by package. Generally, cancellations made more than 30 days before departure receive a full refund, while cancellations within 30 days may incur fees. Please refer to the specific package details or contact us for exact terms.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer group discounts?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer special discounts for groups of 6 or more people traveling together. Contact our group travel specialists for customized quotes and special arrangements.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards (Visa, MasterCard, American Express), bank transfers, and digital payment methods like PayPal. Some locations may also accept cash payments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h2>Get Travel Inspiration</h2>
+            <p>Subscribe to our newsletter for exclusive deals, travel tips, and destination highlights</p>
+            <form method="post" action="" class="newsletter-form">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="far fa-paper-plane"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <!-- App Promotion -->
+    <div class="container">
+        <div class="app-promo">
+            <div class="app-content">
+                <h2>Download Our Mobile App</h2>
+                <p>Book tours on the go, get real-time updates, access exclusive mobile-only deals, and manage all your travel plans in one place with our intuitive mobile application.</p>
+                <div class="app-badges">
+                    <a href="#" class="app-badge">
+                        <i class="fab fa-google-play"></i>
+                        <span>Google Play</span>
+                    </a>
+                    <a href="#" class="app-badge">
+                        <i class="fab fa-apple"></i>
+                        <span>App Store</span>
+                    </a>
+                </div>
+            </div>
+            <div class="app-image">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/1400/344d05108317489.5fbb7a8e120d2.png" alt="Explore Tours Mobile App">
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Need Help?</h2>
+            <p class="section-subtitle">Our travel experts are ready to assist you with any questions</p>
+
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <h3>Call Us</h3>
+                    <p>+91 8129778267</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <a href="mailto:info@exploretours.com">info@exploretours.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Visit Us</h3>
+                    <p>123 Travel Street, Suite 100<br>New York, NY 10001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class=""></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marked-alt"></i> Explore Tours
+                    </div>
+                    <p>Creating unforgettable travel experiences since 2005. We're dedicated to providing exceptional service and unique journeys that create lifelong memories.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="{% url 'home' %}"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="#featured"><i class="fas fa-chevron-right"></i> Featured Packages</a>
+                        <a href="#destinations"><i class="fas fa-chevron-right"></i> Destinations</a>
+                        <a href="#about"><i class="fas fa-chevron-right"></i> About Us</a>
+                        <a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-chevron-right"></i> FAQs</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Booking Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Cancellation Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and travel inspiration</p>
+                    <form class="newsletter-form" style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; padding: 10px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Explore Tours. All rights reserved.</p>
+                <p>
+                    <a href="#">Terms & Conditions</a> |
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Sitemap</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+
+                // Close other open FAQs
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    if (item !== faqItem && item.classList.contains('active')) {
+                        item.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            // Get form elements
+            const form = document.getElementById('searchForm');
+            const destination = document.getElementById('destination');
+            const date = document.getElementById('date');
+            const duration = document.getElementById('duration');
+
+            // Reset error messages
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+
+            let isValid = true;
+
+            // Validate destination
+            if (!destination.value.trim()) {
+                document.getElementById('destinationError').textContent = 'Please enter a destination';
+                document.getElementById('destinationError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate date
+            if (!date.value) {
+                document.getElementById('dateError').textContent = 'Please select a travel date';
+                document.getElementById('dateError').style.display = 'block';
+                isValid = false;
+            } else {
+                const selectedDate = new Date(date.value);
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (selectedDate < today) {
+                    document.getElementById('dateError').textContent = 'Travel date cannot be in the past';
+                    document.getElementById('dateError').style.display = 'block';
+                    isValid = false;
+                }
+            }
+
+            // Validate duration
+            if (!duration.value) {
+                document.getElementById('durationError').textContent = 'Please select a duration';
+                document.getElementById('durationError').style.display = 'block';
+                isValid = false;
+            }
+
+            // If form is valid, proceed with search
+            if (isValid) {
+                // Perform search (replace with your actual search logic)
+                performSearch({
+                    destination: destination.value.trim(),
+                    date: date.value,
+                    duration: duration.value
+                });
+            }
+        });
+
+        function performSearch(searchParams) {
+            // Here you would typically:
+            // 1. Send the search parameters to your backend
+            // 2. Filter packages based on the search criteria
+            // 3. Display the results
+
+            console.log('Searching for:', searchParams);
+
+            // For demonstration, we'll just scroll to the packages section
+            document.getElementById('featured').scrollIntoView({ behavior: 'smooth' });
+
+            // In a real implementation, you would:
+            // - Make an AJAX request to your backend
+            // - Update the DOM with filtered results
+            // - Or redirect to a search results page with the parameters
+        }
+    </script>
+</body>
+</html>

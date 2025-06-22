@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if package %}Edit Package{% else %}Create Package{% endif %} | TravelPack</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #6366f1;
+            --secondary: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --dark: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --gray-light: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #ffffff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo i {
+            color: var(--primary);
+            font-size: 1.75rem;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--gray);
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav a.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        nav a.active::after {
+            width: 100%;
+        }
+
+        .btn-logout {
+            background: var(--light);
+            color: var(--danger);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 500;
+            border: 1px solid var(--gray-light);
+            transition: all 0.3s ease;
+        }
+
+        .btn-logout:hover {
+            background: var(--danger);
+            color: white;
+            border-color: var(--danger);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 3rem;
+            border: 1px solid var(--gray-light);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .form-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .form-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .alert-success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .alert-success i {
+            color: var(--secondary);
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .alert-warning i {
+            color: var(--warning);
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .form-group label.required::after {
+            content: '*';
+            color: var(--danger);
+            margin-left: 4px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.25rem;
+            border: 1px solid var(--gray-light);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload-wrapper {
+            position: relative;
+            margin-top: 0.5rem;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.25rem;
+            border: 2px dashed var(--gray-light);
+            border-radius: 8px;
+            background: var(--light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--gray);
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--primary);
+            background: rgba(79, 70, 229, 0.05);
+            color: var(--primary);
+        }
+
+        .file-upload-label i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .file-upload-label span {
+            font-size: 0.9rem;
+        }
+
+        .file-upload-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .preview-container {
+            margin-top: 1.5rem;
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .preview-count {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .preview-count.valid {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .preview-count.invalid {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        .preview-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .preview-image {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid var(--gray-light);
+            transition: all 0.2s ease;
+        }
+
+        .preview-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .remove-image {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .preview-image:hover .remove-image {
+            opacity: 1;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-submit:disabled {
+            background: var(--gray-light);
+            color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .errorlist {
+            list-style: none;
+            margin: 0.5rem 0 0 0;
+            padding: 0;
+            font-size: 0.85rem;
+        }
+
+        .errorlist li {
+            color: var(--danger);
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            background: rgba(239, 68, 68, 0.1);
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .errorlist li::before {
+            content: '!';
+            font-weight: bold;
+        }
+
+        .upload-requirements {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .upload-requirements i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .container {
+                padding: 0 1rem;
+                margin: 1.5rem auto;
+            }
+
+            .form-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .form-header h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .form-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .form-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .form-control {
+                padding: 0.8rem 1rem;
+            }
+
+            .btn-submit {
+                padding: 0.9rem;
+                font-size: 0.95rem;
+            }
+
+            .preview-image {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+        .form-group:nth-child(6) { animation-delay: 0.6s; }
+        .btn-submit {
+            animation: fadeIn 0.4s ease-out 0.7s both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                  <a href="{% url 'home' %}" class="logo">
+                         <i class="fas fa-map-marked-alt logo-icon"></i>
+                <h1>Explore Tours</h1>
+            </div>
+            <nav>
+                <a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a>
+                <a href="{% url 'vendor_dashboard' %}" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="{% url 'logout' %}" class="btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="form-card">
+            <div class="form-header">
+                <h2>{% if package %}Edit Package{% else %}Create New Package{% endif %}</h2>
+                <p>{% if package %}Update your existing package details{% else %}Fill in the details to create a new travel package{% endif %}</p>
+            </div>
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            <form method="post" enctype="multipart/form-data" id="packageForm">
+                {% csrf_token %}
+
+                {% for field in form %}
+                    {% if field.name != 'images' %}
+                        <div class="form-group">
+                            <label for="{{ field.id_for_label }}" class="{% if field.field.required %}required{% endif %}">
+                                {{ field.label }}
+                            </label>
+                            {% if field.field.widget.input_type == 'select' %}
+                                <select class="form-control" id="{{ field.id_for_label }}" name="{{ field.name }}">
+                                    {% for choice in field.field.choices %}
+                                        <option value="{{ choice.0 }}" {% if field.value == choice.0 %}selected{% endif %}>
+                                            {{ choice.1 }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            {% else %}
+                                <input type="{{ field.field.widget.input_type }}"
+                                       class="form-control"
+                                       id="{{ field.id_for_label }}"
+                                       name="{{ field.name }}"
+                                       value="{{ field.value|default:'' }}"
+                                       placeholder="Enter {{ field.label|lower }}"
+                                       {% if field.field.required %}required{% endif %}>
+                            {% endif %}
+                            {% if field.errors %}
+                                <ul class="errorlist">
+                                    {% for error in field.errors %}
+                                        <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="form-group">
+                    <label for="{{ form.images.id_for_label }}" class="required">Package Images</label>
+                    <div class="upload-requirements">
+                        <i class="fas fa-info-circle"></i>
+                        Minimum 3 high-quality images required (JPEG, PNG, max 5MB each)
+                    </div>
+                    <div class="file-upload-wrapper">
+                        <label class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Click to upload or drag and drop</span>
+                            <small>Recommended size: 1200x800 pixels or larger</small>
+                            <input type="file"
+                                   class="file-upload-input"
+                                   id="{{ form.images.id_for_label }}"
+                                   name="images"
+                                   multiple
+                                   accept="image/jpeg,image/png"
+                                   required>
+                        </label>
+                        {% if form.images.errors %}
+                            <ul class="errorlist">
+                                {% for error in form.images.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="preview-container" id="previewContainer" style="display: none;">
+                        <div class="preview-header">
+                            <span>Selected Images</span>
+                            <span class="preview-count" id="imageCount">0 images</span>
+                        </div>
+                        <div class="preview-images" id="imagePreview"></div>
+                    </div>
+
+                    {% if package and package.images.exists %}
+                        <div class="preview-container">
+                            <div class="preview-header">
+                                <span>Current Images</span>
+                                <span class="preview-count">{{ package.images.count }} images</span>
+                            </div>
+                            <div class="preview-images">
+                                {% for image in package.images.all %}
+                                    <div class="image-wrapper">
+                                        <img src="{{ image.image.url }}" alt="Package Image" class="preview-image">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="btn-submit" id="submitBtn" disabled>
+                    <i class="fas fa-save"></i>
+                    {% if package %}Update Package{% else %}Create Package{% endif %}
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fileInput = document.getElementById('{{ form.images.id_for_label }}');
+            const previewContainer = document.getElementById('previewContainer');
+            const imagePreview = document.getElementById('imagePreview');
+            const imageCount = document.getElementById('imageCount');
+            const submitBtn = document.getElementById('submitBtn');
+            const form = document.getElementById('packageForm');
+
+            // Store selected files
+            let selectedFiles = [];
+
+            // Preview images before upload
+            fileInput.addEventListener('change', function(e) {
+                const files = e.target.files;
+                selectedFiles = Array.from(files);
+
+                updatePreview();
+                validateForm();
+            });
+
+            // Drag and drop functionality
+            const dropArea = document.querySelector('.file-upload-label');
+
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropArea.addEventListener(eventName, highlight, false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropArea.addEventListener(eventName, unhighlight, false);
+            });
+
+            function highlight() {
+                dropArea.style.borderColor = 'var(--primary)';
+                dropArea.style.backgroundColor = 'rgba(79, 70, 229, 0.05)';
+            }
+
+            function unhighlight() {
+                dropArea.style.borderColor = 'var(--gray-light)';
+                dropArea.style.backgroundColor = 'var(--light)';
+            }
+
+            dropArea.addEventListener('drop', handleDrop, false);
+
+            function handleDrop(e) {
+                const dt = e.dataTransfer;
+                const files = dt.files;
+                fileInput.files = files;
+                selectedFiles = Array.from(files);
+
+                updatePreview();
+                validateForm();
+            }
+
+            // Update image preview
+            function updatePreview() {
+                imagePreview.innerHTML = '';
+
+                if (selectedFiles.length === 0) {
+                    previewContainer.style.display = 'none';
+                    return;
+                }
+
+                previewContainer.style.display = 'block';
+
+                selectedFiles.forEach((file, index) => {
+                    if (!file.type.match('image.*')) return;
+
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const imgWrapper = document.createElement('div');
+                        imgWrapper.className = 'image-wrapper';
+
+                        const img = document.createElement('img');
+                        img.src = event.target.result;
+                        img.className = 'preview-image';
+
+                        const removeBtn = document.createElement('div');
+                        removeBtn.className = 'remove-image';
+                        removeBtn.innerHTML = '&times;';
+                        removeBtn.addEventListener('click', () => removeImage(index));
+
+                        imgWrapper.appendChild(img);
+                        imgWrapper.appendChild(removeBtn);
+                        imagePreview.appendChild(imgWrapper);
+                    }
+                    reader.readAsDataURL(file);
+                });
+
+                updateImageCount();
+            }
+
+            // Remove image from selection
+            function removeImage(index) {
+                selectedFiles.splice(index, 1);
+
+                // Update the file input (this is tricky since we can't directly modify files)
+                const dataTransfer = new DataTransfer();
+                selectedFiles.forEach(file => dataTransfer.items.add(file));
+                fileInput.files = dataTransfer.files;
+
+                updatePreview();
+                validateForm();
+            }
+
+            // Update image count display
+            function updateImageCount() {
+                const count = selectedFiles.length;
+                imageCount.textContent = `${count} image${count !== 1 ? 's' : ''}`;
+
+                if (count >= 3) {
+                    imageCount.classList.remove('invalid');
+                    imageCount.classList.add('valid');
+                } else {
+                    imageCount.classList.remove('valid');
+                    imageCount.classList.add('invalid');
+                }
+            }
+
+            // Validate form before submission
+            function validateForm() {
+                const isValid = selectedFiles.length >= 3;
+                submitBtn.disabled = !isValid;
+
+                // Show warning if not enough images
+                const existingWarning = document.querySelector('.image-warning');
+                if (existingWarning) existingWarning.remove();
+
+                if (selectedFiles.length > 0 && selectedFiles.length < 3) {
+                    const warning = document.createElement('div');
+                    warning.className = 'alert alert-warning';
+                    warning.innerHTML = `
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Please upload at least 3 images for your package (${selectedFiles.length}/3)
+                    `;
+                    warning.classList.add('image-warning');
+                    previewContainer.appendChild(warning);
+                }
+            }
+
+            // Client-side validation before form submission
+            form.addEventListener('submit', function(e) {
+                if (selectedFiles.length < 3) {
+                    e.preventDefault();
+                    alert('Please upload at least 3 images for your package.');
+                    fileInput.focus();
+                }
+
+                // Additional validation for file sizes
+                let isValid = true;
+                const maxSize = 5 * 1024 * 1024; // 5MB
+
+                for (const file of selectedFiles) {
+                    if (file.size > maxSize) {
+                        isValid = false;
+                        alert(`File "${file.name}" is too large. Maximum size is 5MB.`);
+                        break;
+                    }
+                }
+
+                if (!isValid) {
+                    e.preventDefault();
+                }
+            });
+
+            // Initialize form validation
+            validateForm();
+
+            // Show preview container if there are existing images
+            if (selectedFiles.length > 0 || (package && package.images.exists)) {
+                previewContainer.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

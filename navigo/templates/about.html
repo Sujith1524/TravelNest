@@ -1,0 +1,967 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Explore Tours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 8px;
+            margin-left: 1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.75rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* About Page Specific Styles */
+        .about-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 4rem;
+        }
+
+        .about-hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .about-hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .about-hero:hover h1,
+        .about-hero:hover p {
+            transform: translateY(-5px);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .team-section {
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
+            padding: 5rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 5px solid var(--light-gray);
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: rotate(5deg);
+            border-color: var(--primary);
+        }
+
+        .team-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .team-card:hover h3 {
+            color: var(--primary);
+        }
+
+        .team-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .team-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .team-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .values-section {
+            padding: 5rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--secondary);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover .value-icon {
+            transform: scale(1.2);
+            color: var(--secondary);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover h3 {
+            color: var(--primary);
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 14px 28px;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn i {
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover i {
+            transform: translateX(3px);
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Newsletter Styles */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(37, 99, 235, 0.3);
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .newsletter:hover::before {
+            transform: scale(1.1);
+        }
+
+        .newsletter::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.5s ease;
+        }
+
+        .newsletter:hover::after {
+            transform: scale(1.1);
+        }
+
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .newsletter-form button {
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        #subscriptionMessage {
+            position: relative;
+            z-index: 2;
+            margin-top: 1rem;
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            transition: all 0.3s ease;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+            position: relative;
+        }
+
+        .footer-wave {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%232c3e50" opacity=".25"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" fill="%232c3e50" opacity=".5"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%232c3e50"/></svg>');
+            background-size: cover;
+            transition: all 0.3s ease;
+        }
+
+        footer:hover .footer-wave {
+            transform: translateY(-5px);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-logo:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-about p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-column:hover h3 {
+            color: var(--secondary);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .footer-column:hover h3::after {
+            width: 60px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-links a:hover i {
+            color: var(--secondary);
+            transform: rotate(45deg);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="{% url 'home' %}" class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Explore Tours</span>
+            </a>
+            <nav>
+                <a href="{% url 'home' %}">Home</a>
+<!--                <a href="#featured">Packages</a>-->
+<!--                <a href="#destinations">Destinations</a>-->
+                <a href="{% url 'about' %}">About Us</a>
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                        <a href="{% url 'vendor_dashboard' %}">Vendor Dashboard</a>
+                    {% endif %}
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'logout' %}" class="nav-cta">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}" class="nav-cta">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <!-- About Hero -->
+    <section class="about-hero">
+        <div class="container">
+            <h1>Our Story</h1>
+            <p>Discover the passion and dedication behind Explore Tours, where every journey begins with a story</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?ixlib=rb-4.0.3&auto=format&fit=crop&w=774&q=80" alt="Our Team">
+                </div>
+                <div class="about-text">
+                    <h2>Who We Are</h2>
+                    <p>Founded in 2005, Explore Tours began as a small team of travel enthusiasts with a shared vision: to create unforgettable travel experiences that go beyond the ordinary. What started as a passion project has grown into a leading travel company with operations in over 50 countries.</p>
+                    <p>Our mission is simple - to inspire and enable people to explore the world in a meaningful way. We believe travel has the power to transform lives, broaden perspectives, and create connections that transcend borders.</p>
+                    <p>Today, we're proud to have served over 100,000 travelers, each with their own unique story. From honeymooners to adventure seekers, families to solo travelers, we've had the privilege of crafting journeys that create lifelong memories.</p>
+                    <a href="#contact" class="btn btn-primary">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Values</h2>
+            <p class="section-subtitle">The principles that guide everything we do</p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Passion for Travel</h3>
+                    <p>We're not just a business - we're travelers at heart. Our team personally experiences each destination to ensure we recommend only the best.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Integrity</h3>
+                    <p>We believe in honest, transparent dealings with our customers and partners. What we promise is what you'll receive.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>We constantly seek new ways to enhance your travel experience, from unique itineraries to cutting-edge booking technology.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>Sustainable Tourism</h3>
+                    <p>We're committed to responsible travel that benefits local communities and preserves natural environments.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Excellence</h3>
+                    <p>From our customer service to our tour quality, we settle for nothing less than the best in everything we do.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-laugh-beam"></i>
+                    </div>
+                    <h3>Joy</h3>
+                    <p>At the end of the day, we're here to spread happiness through the joy of travel and discovery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">The passionate people behind your perfect journey</p>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="team-avatar">
+                    <h3>Sarah Johnson</h3>
+                    <p>Founder & CEO</p>
+                    <p>With over 20 years in the travel industry, Sarah's vision drives our company forward.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="team-avatar">
+                    <h3>Michael Chen</h3>
+                    <p>Director of Operations</p>
+                    <p>Michael ensures every tour runs smoothly with his exceptional organizational skills.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Patel" class="team-avatar">
+                    <h3>Priya Patel</h3>
+                    <p>Head of Customer Experience</p>
+                    <p>Priya and her team make sure every traveler feels valued and supported.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                <div class="team-card">
+                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="David Kim" class="team-avatar">
+                    <h3>David Kim</h3>
+                    <p>Chief Travel Designer</p>
+                    <p>David's creative itineraries are what make our tours truly special.</p>
+                    <div class="team-social">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <div class="container">
+        <div class="newsletter">
+            <h2>Get Travel Inspiration</h2>
+            <p>Subscribe to our newsletter for exclusive deals, travel tips, and destination highlights</p>
+            <form method="post" class="newsletter-form" id="newsletterForm">
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-accent">Subscribe <i class="far fa-paper-plane"></i></button>
+            </form>
+            <div id="subscriptionMessage" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class=""></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-map-marked-alt"></i> Explore Tours
+                    </div>
+                    <p>Creating unforgettable travel experiences since 2005. We're dedicated to providing exceptional service and unique journeys that create lifelong memories.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="{% url 'home' %}"><i class="fas fa-chevron-right"></i> Home</a>
+                        <a href="#featured"><i class="fas fa-chevron-right"></i> Featured Packages</a>
+                        <a href="#destinations"><i class="fas fa-chevron-right"></i> Destinations</a>
+                        <a href="{% url 'about' %}"><i class="fas fa-chevron-right"></i> About Us</a>
+                        <a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <div class="footer-links">
+                        <a href="#"><i class="fas fa-chevron-right"></i> FAQs</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Booking Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Cancellation Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Privacy Policy</a>
+                        <a href="#"><i class="fas fa-chevron-right"></i> Terms & Conditions</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to get special offers and travel inspiration</p>
+                    <form class="newsletter-form" style="margin-top: 1rem;">
+                        <input type="email" placeholder="Your email address">
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; padding: 10px;">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Explore Tours. All rights reserved.</p>
+                <p>
+                    <a href="#">Terms & Conditions</a> |
+                    <a href="#">Privacy Policy</a> |
+                    <a href="#">Sitemap</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Newsletter Form Submission
+        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const messageElement = document.getElementById('subscriptionMessage');
+
+            // Simulate form submission (replace with actual AJAX call in production)
+            setTimeout(() => {
+                messageElement.textContent = "Thank you for subscribing! You'll receive our next newsletter soon.";
+                messageElement.style.display = 'block';
+                messageElement.style.backgroundColor = 'rgba(76, 175, 80, 0.9)';
+                messageElement.style.color = 'white';
+                messageElement.style.padding = '10px';
+                messageElement.style.borderRadius = '8px';
+                messageElement.style.marginTop = '1rem';
+                form.reset();
+
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    messageElement.style.display = 'none';
+                }, 5000);
+            }, 1000);
+        });
+
+        // Add smooth scrolling to all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

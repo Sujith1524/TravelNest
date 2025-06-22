@@ -1,0 +1,2015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ package.title }} - Premium Tour Package | Explore Tours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #f59e0b;
+            --accent: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #ffffff;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--secondary);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 70%;
+        }
+
+        .nav-cta {
+            background: var(--primary);
+            color: white !important;
+            padding: 0.6rem 1.5rem !important;
+            border-radius: 8px;
+            margin-left: 1rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 99, 235, 0.3);
+        }
+
+        .nav-cta::after {
+            display: none;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        /* Package Hero */
+        .package-hero {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .hero-carousel {
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
+        }
+
+        .carousel-slide {
+            flex: 0 0 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+            transform-origin: center center;
+        }
+
+        .carousel-slide:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Enhanced Carousel Buttons */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            z-index: 10;
+            transition: all 0.3s ease;
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-carousel:hover .carousel-btn {
+            opacity: 1;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        /* Enhanced Carousel Dots */
+        .carousel-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .carousel-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .carousel-dot::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-dot:hover::after {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 4rem 3rem;
+            color: white;
+            z-index: 5;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            box-shadow: 0 15px 40px rgba(245, 158, 11, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .price-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(245, 158, 11, 0.4);
+        }
+
+        .price-badge span {
+            font-size: 1rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2.5rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .description-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Details Grid */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .detail-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+        }
+
+        .detail-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        /* Itinerary */
+        .itinerary {
+            margin: 3rem 0;
+        }
+
+        .itinerary-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .itinerary-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: var(--light-gray);
+        }
+
+        .itinerary-day {
+            min-width: 80px;
+            height: 80px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .itinerary-item:hover .itinerary-day {
+            transform: rotate(10deg) scale(1.1);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .itinerary-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            flex-grow: 1;
+            transition: all 0.3s ease;
+        }
+
+        .itinerary-item:hover .itinerary-content {
+            transform: translateX(10px);
+            border-color: var(--primary);
+        }
+
+        .itinerary-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .itinerary-description {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        /* Info Card */
+        .info-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover .info-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        /* Booking Card */
+        .booking-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .booking-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .booking-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .booking-text {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1.2rem 2.5rem;
+            background: white;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn i {
+            font-size: 1rem;
+        }
+
+        /* Login Prompt */
+        .login-prompt {
+            background: linear-gradient(135deg, #fff9c4, #ffcc80);
+            color: var(--dark);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 204, 128, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .login-prompt:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 204, 128, 0.4);
+        }
+
+        .login-prompt p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .login-prompt a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .login-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        /* Why Choose Us */
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            transform: translateX(5px);
+        }
+
+        .benefit-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.2);
+        }
+
+        .benefit-text {
+            color: var(--gray);
+        }
+
+        /* Expiry Badge */
+        .expiry-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .expiry-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        /* Gallery */
+        .gallery {
+            margin: 3rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 200px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Reviews */
+        .reviews {
+            margin: 3rem 0;
+        }
+
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover .review-avatar {
+            transform: scale(1.1);
+        }
+
+        .review-author {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            color: var(--secondary);
+            margin: 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .review-text {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Package Highlights */
+        .highlights {
+            margin: 3rem 0;
+        }
+
+        .highlight-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+
+        .highlight-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .highlight-item:hover .highlight-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .highlight-text {
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+
+     /* Weather Widget */
+.weather-widget {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.weather-widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    border-color: var(--primary);
+}
+
+.weather-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.weather-widget:hover .weather-icon {
+    transform: rotate(15deg) scale(1.1);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: rotate(15deg) scale(1.1); }
+    50% { transform: rotate(15deg) scale(1.15); }
+    100% { transform: rotate(15deg) scale(1.1); }
+}
+
+.weather-temp {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    color: var(--dark);
+}
+
+.weather-widget:hover .weather-temp {
+    color: var(--primary);
+    transform: scale(1.05);
+}
+
+.weather-desc {
+    color: var(--gray);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.weather-widget:hover .weather-desc {
+    color: var(--dark);
+    transform: translateY(2px);
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.weather-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
+}
+
+.weather-widget:hover .weather-detail {
+    background: rgba(226, 232, 240, 0.3);
+    transform: translateY(-2px);
+}
+
+.weather-detail i {
+    color: var(--primary);
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.weather-widget:hover .weather-detail i {
+    transform: rotate(10deg) scale(1.2);
+}
+
+
+
+        /* FAQ Section */
+        .faq {
+            margin: 3rem 0;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-question {
+            background: white;
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            background: #f8fafc;
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .hero-carousel {
+                height: 500px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                order: -1;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-cta {
+                margin-left: 0;
+            }
+
+            .main-container {
+                padding: 0 1.5rem;
+                margin: 1.5rem auto;
+            }
+
+            .hero-carousel {
+                height: 400px;
+            }
+
+            .hero-overlay {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .main-content,
+            .info-card {
+                padding: 2rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-carousel {
+                height: 350px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .price-badge {
+                font-size: 1.5rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .itinerary-item {
+                flex-direction: column;
+                padding-left: 0;
+            }
+
+            .itinerary-item::before {
+                display: none;
+            }
+
+            .itinerary-day {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .carousel-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* New Animation for Image Transition */
+        @keyframes fadeIn {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+
+        .carousel-slide.active img {
+            animation: fadeIn 0.7s ease-out;
+        }
+
+         /* Similar Tours */
+        .tour-card {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .tour-card:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .tour-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .tour-info {
+            flex: 1;
+        }
+
+        .tour-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .tour-meta {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .tour-price {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .tour-rating {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Unique styling for experiences widget */
+.experiences-widget {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.experiences-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.experiences-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.compass-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  animation: spin 15s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.experience-cards {
+  display: grid;
+  gap: 1rem;
+}
+
+.experience-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(226, 232, 240, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.experience-card:hover {
+  transform: translateX(8px);
+  background: rgba(var(--primary-rgb), 0.1);
+}
+
+.experience-badge {
+  width: 50px;
+  height: 50px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  color: var(--primary);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.experience-card:hover .experience-badge {
+  transform: scale(1.1) rotate(10deg);
+  color: white;
+  background: var(--primary);
+}
+
+.experience-hover {
+  position: absolute;
+  right: -150px;
+  top: 0;
+  bottom: 0;
+  width: 140px;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 1rem;
+  transition: right 0.3s ease;
+}
+
+.experience-card:hover .experience-hover {
+  right: 0;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="{% url 'home' %}" class="logo">
+                <i class="fas fa-map-marked-alt"></i>
+                <span>Explore Tours</span>
+            </a>
+            <nav>
+                <a href="{% url 'home' %}">Home</a>
+                <a href="#itinerary">Itinerary</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+                {% if user.is_authenticated %}
+                    {% if user.is_staff %}
+                        <a href="{% url 'admin_dashboard' %}">Admin Dashboard</a>
+                    {% elif user.groups|length > 0 and user.groups.all.0.name == 'Vendors' %}
+                        <a href="{% url 'vendor_dashboard' %}">Vendor Dashboard</a>
+                    {% endif %}
+                    <a href="{% url 'profile' %}">Profile</a>
+                    <a href="{% url 'logout' %}" class="nav-cta">Logout</a>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    <a href="{% url 'register' %}" class="nav-cta">Register</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Package Hero -->
+        <div class="package-hero">
+            <div class="hero-carousel">
+                <div class="carousel-container">
+                    {% if package.images.all %}
+                        {% for image in package.images.all %}
+                            <div class="carousel-slide {% if forloop.first %}active{% endif %}">
+                                <img src="{{ image.image.url }}" alt="{{ package.title }} - Image {{ forloop.counter }}">
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="carousel-slide active">
+                            <div style="height: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">
+                                {{ package.title }}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% if package.images.count > 1 %}
+                    <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                    <div class="carousel-dots">
+                        {% for image in package.images.all %}
+                            <span class="carousel-dot {% if forloop.first %}active{% endif %}"></span>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="hero-overlay">
+                    <h1 class="hero-title">{{ package.title }}</h1>
+                    <p class="hero-subtitle">{{ package.destination }}</p>
+                    <div class="price-badge">
+                        ₹{{ package.price }} <span>per person</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Main Content -->
+            <div class="main-content">
+                <h2 class="section-title">Package Details</h2>
+                <p class="description-text">{{ package.description }}</p>
+
+
+
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Duration</div>
+                        <div class="detail-value">{{ package.duration }} Days</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Destination</div>
+                        <div class="detail-value">{{ package.destination }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Price</div>
+                        <div class="detail-value">₹{{ package.price }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Valid Until</div>
+                        <div class="detail-value">{{ package.expiry_date|date:"M d, Y" }}</div>
+                    </div>
+                </div>
+
+
+                 <!-- Gallery Section -->
+                <div class="gallery" id="gallery">
+                    <h2 class="section-title">Photo Gallery</h2>
+                    <p class="description-text">Explore beautiful moments from this amazing tour package.</p>
+
+                    <div class="gallery-grid">
+                        {% if package.images.all %}
+                            {% for image in package.images.all %}
+                                <div class="gallery-item">
+                                    <img src="{{ image.image.url }}" alt="{{ package.title }} - Gallery Image {{ forloop.counter }}">
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="gallery-item">
+                                <div style="height: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); display: flex; align-items: center; justify-content: center; color: white;">
+                                    No Images Available
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+
+                <!-- Package Highlights -->
+                <div class="highlights">
+                    <h3 class="section-title" style="font-size: 2rem;">Package Highlights</h3>
+                    <div class="highlight-list">
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <div class="highlight-text">Guided tours to all major attractions</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="highlight-text">Daily breakfast & 3 gourmet dinners</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-hotel"></i>
+                            </div>
+                            <div class="highlight-text">4-star accommodation throughout</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="highlight-text">Private transportation with AC</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <div class="highlight-text">Professional photography session</div>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="highlight-icon">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <div class="highlight-text">Welcome package & local souvenirs</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- Itinerary Section -->
+                <div class="itinerary" id="itinerary">
+                    <h2 class="section-title">Tour Itinerary</h2>
+
+                    <div class="itinerary-item">
+                        <div class="itinerary-day">1</div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-title">Arrival & Welcome</h3>
+                            <p class="itinerary-description">Arrive at your destination where our representative will greet you and transfer you to your hotel. Enjoy a welcome dinner featuring local cuisine and a cultural performance.</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-item">
+                        <div class="itinerary-day">2</div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-title">City Exploration</h3>
+                            <p class="itinerary-description">Full-day guided tour of the city's most famous landmarks, including historical sites and cultural attractions. Lunch at a renowned local restaurant with panoramic city views.</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-item">
+                        <div class="itinerary-day">3</div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-title">Nature Adventure</h3>
+                            <p class="itinerary-description">Day trip to the surrounding natural wonders including national parks and scenic viewpoints. Optional activities include hiking, wildlife spotting, or a relaxing spa experience at our partner resort.</p>
+                        </div>
+                    </div>
+
+                    <div class="itinerary-item">
+                        <div class="itinerary-day">4</div>
+                        <div class="itinerary-content">
+                            <h3 class="itinerary-title">Free Day & Departure</h3>
+                            <p class="itinerary-description">Free time to explore on your own or enjoy hotel amenities. We can arrange optional activities like shopping tours or cooking classes. Evening transfer to the airport for your departure flight with farewell gifts.</p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!-- Reviews Section -->
+                <div class="reviews" id="reviews">
+                    <h2 class="section-title">Traveler Reviews</h2>
+                    <p class="description-text">What our customers say about this tour package.</p>
+
+                    <div class="review-grid">
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah J." class="review-avatar">
+                                <div>
+                                    <div class="review-author">Sarah J.</div>
+                                    <div class="review-date">March 15, 2023</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">This tour exceeded all my expectations! The itinerary was perfectly balanced between sightseeing and free time. Our guide was incredibly knowledgeable and made the whole experience unforgettable. The hotels were luxurious and the food was exceptional. I would book with Explore Tours again in a heartbeat!</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Michael T." class="review-avatar">
+                                <div>
+                                    <div class="review-author">Michael T.</div>
+                                    <div class="review-date">January 28, 2023</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <p class="review-text">Wonderful experience from start to finish. The hotels were excellent and the transportation was always on time. The only reason I'm not giving 5 stars is because one of the optional activities was canceled due to weather, but the team quickly arranged an excellent alternative. Would definitely recommend this tour to anyone!</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Emily R." class="review-avatar">
+                                <div>
+                                    <div class="review-author">Emily R.</div>
+                                    <div class="review-date">December 5, 2022</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <p class="review-text">Great value for money! The tour covered all the highlights and more. The only reason I'm not giving 5 stars is because one of the hotels wasn't as central as I would have liked, but the quality of the accommodation was excellent. The guide was fantastic - so knowledgeable and passionate about the local culture.</p>
+                        </div>
+                        <div class="review-card">
+                            <div class="review-header">
+                                <img src="https://xsgames.co/randomusers/assets/avatars/female/23.jpg" alt="Lisa M." class="review-avatar">
+                                <div>
+                                    <div class="review-author">Lisa M.</div>
+                                    <div class="review-date">April 2, 2023</div>
+                                </div>
+                            </div>
+                            <div class="review-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <p class="review-text">Absolutely phenomenal experience from start to finish! The attention to detail was impressive, and every activity was well-planned. Our guide's passion for the destination was contagious - I learned so much while having an incredible time. The small group size made it feel personalized and special. Already planning my next trip with Explore Tours!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Quick Info Card -->
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        Quick Info
+                    </h3>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Duration:</strong> {{ package.duration }} days / {{ package.duration|add:"-1" }} nights
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Destination:</strong> {{ package.destination }}
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Group Size:</strong> Small groups (max 12 people)
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Difficulty:</strong> Moderate (suitable for most fitness levels)
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>Best Time:</strong> {{ package.best_time|default:"Year-round" }}
+                    </div>
+                    <div class="expiry-badge">
+                        <i class="fas fa-clock"></i>
+                        Expires: {{ package.expiry_date|date:"M d, Y" }}
+                    </div>
+                </div>
+
+                <!-- Booking Card -->
+                <div class="info-card">
+                    {% if user.is_authenticated %}
+                        <div class="booking-card">
+                            <div class="booking-content">
+                                <h3 class="booking-title">Ready for Adventure?</h3>
+                                <p class="booking-text">Book your spot now and secure this amazing experience!</p>
+                                <a href="{% url 'book_page' package.id %}" class="btn">
+                                    <i class="fas fa-calendar-check"></i> Book Now
+                                </a>
+                                <p style="margin-top: 1.5rem; font-size: 0.9rem; opacity: 0.8;">Only 3 spots left at this price!</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="login-prompt">
+                            <p><strong>Want to book this amazing package?</strong></p>
+                            <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to continue with your booking.</p>
+                            <div style="margin-top: 1rem; font-size: 0.9rem;">
+                                <i class="fas fa-lock" style="margin-right: 0.5rem;"></i> Secure booking process
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <!-- Weather Widget -->
+                <div class="weather-widget">
+                    <div class="weather-header">
+                        <i class="fas fa-sun" style="font-size: 2rem; color: var(--secondary);"></i>
+                        <h3>Current Weather</h3>
+                    </div>
+                    <div class="weather-temp">28°C</div>
+                    <div class="weather-desc">Sunny in {{ package.destination }}</div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i> 12 km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i> 45% humidity
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-eye"></i> 10 km visibility
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-cloud"></i> 10% precipitation
+                        </div>
+                    </div>
+                </div>
+
+
+
+               <!-- Local Experiences Widget -->
+<div class="experiences-widget">
+  <div class="experiences-header">
+    <div class="compass-icon">
+      <i class="fas fa-compass"></i>
+    </div>
+    <h3>Unique Local Experiences</h3>
+  </div>
+
+  <div class="experience-cards">
+    <!-- Experience 1 -->
+    <div class="experience-card">
+      <div class="experience-badge">
+        <i class="fas fa-chess-queen"></i>
+      </div>
+      <div class="experience-content">
+        <h4>Traditional Craft Workshop</h4>
+        <p>Hands-on session with local artisans</p>
+        <div class="experience-hover">
+          <span>2hr</span>
+          <span>Includes materials</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience 2 -->
+    <div class="experience-card">
+      <div class="experience-badge">
+        <i class="fas fa-mortar-pestle"></i>
+      </div>
+      <div class="experience-content">
+        <h4>Authentic Cooking Class</h4>
+        <p>Learn 3 signature dishes from local chefs</p>
+        <div class="experience-hover">
+          <span>3hr</span>
+          <span>Meal included</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+                <!-- Why Choose Us Card -->
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        Why Choose Us
+                    </h3>
+                    <ul class="benefit-list">
+                        <li class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <strong>Best Price Guarantee</strong> - We'll match any lower price you find for the same itinerary
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <strong>24/7 Support</strong> - Our local team is always available to assist you during your trip
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <strong>Local Experts</strong> - Authentic experiences led by passionate local guides
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <strong>Flexible Options</strong> - Customize your tour with optional activities and extensions
+                            </div>
+                        </li>
+                        <li class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <strong>Sustainable Travel</strong> - We support local communities and eco-friendly practices
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+               <!-- Similar Tours Card -->
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon">
+                            <i class="fas fa-umbrella-beach"></i>
+                        </div>
+                        Similar Tours
+                    </h3>
+                    <div style="margin-top: 1.5rem;">
+                        <div class="tour-card">
+                            <img src="https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Mountain Adventure">
+                            <div class="tour-info">
+                                <div class="tour-title">Mountain Adventure</div>
+                                <div class="tour-meta">
+                                    <span><i class="fas fa-clock"></i> 5 days</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Himalayas</span>
+                                </div>
+                                <div class="tour-price">From ₹25,999</div>
+                                <div class="tour-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tour-card">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Beach Paradise">
+                            <div class="tour-info">
+                                <div class="tour-title">Beach Paradise</div>
+                                <div class="tour-meta">
+                                    <span><i class="fas fa-clock"></i> 4 days</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Goa</span>
+                                </div>
+                                <div class="tour-price">From ₹18,750</div>
+                                <div class="tour-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tour-card">
+                            <img src="https://wallpapercave.com/wp/wp8639321.jpg" alt="Cultural Discovery">
+                            <div class="tour-info">
+                                <div class="tour-title">Cultural Discovery</div>
+                                <div class="tour-meta">
+                                    <span><i class="fas fa-clock"></i> 7 days</span>
+                                    <span><i class="fas fa-map-marker-alt"></i> Rajasthan</span>
+                                </div>
+                                <div class="tour-price">From ₹32,500</div>
+                                <div class="tour-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{% url 'home' %}" style="display: block; text-align: center; margin-top: 1.5rem; color: var(--primary); font-weight: 600; text-decoration: none;">
+                        View All Tours <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i>
+                    </a>
+                </div>
+
+                <!-- Contact Card -->
+                <div class="info-card">
+                    <h3>
+                        <div class="info-icon">
+                            <i class="fas fa-question-circle"></i>
+                        </div>
+                        Have Questions?
+                    </h3>
+                    <p style="margin-bottom: 1.5rem; color: var(--gray);">Our travel experts are happy to help with any questions about this tour or to help you plan your perfect vacation.</p>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">Call us at</div>
+                            <div style="font-weight: 600;">+91 98765 43210</div>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="width: 40px; height: 40px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <div style="font-size: 0.9rem; color: var(--gray);">Email us at</div>
+                            <div style="font-weight: 600;">info@exploretours.com</div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn" style="width: 100%; text-align: center; justify-content: center;">
+                        <i class="fas fa-headset"></i> Live Chat
+                    </a>
+                </div>
+
+
+
+                 <!-- FAQ Section -->
+                    <div class="info-card">
+                <div class="faq">
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What's included in the tour package price?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>The package includes all accommodations in 4-star hotels, daily breakfast, 3 gourmet dinners, all transportation during the tour, entrance fees to all attractions mentioned in the itinerary, professional guide services, and airport transfers.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What's not included in the package?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>International flights, travel insurance, visa fees, personal expenses, optional activities, and meals not specified in the itinerary are not included. Gratuities for guides and drivers are at your discretion.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What is the cancellation policy?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Cancellations made 30+ days before departure receive a full refund. 15-29 days: 50% refund. Less than 15 days: no refund. We strongly recommend purchasing travel insurance to cover unforeseen circumstances.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What should I pack for this tour?
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We recommend comfortable walking shoes, weather-appropriate clothing (layers are best), a daypack, sunscreen, sunglasses, camera, travel adapters, and any personal medications. A detailed packing list will be provided after booking.</p>
+                        </div>
+                    </div>
+                </div>
+                        </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Enhanced Carousel functionality
+        const carousel = document.querySelector('.carousel-container');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const prevBtn = document.querySelector('.carousel-btn.prev');
+        const nextBtn = document.querySelector('.carousel-btn.next');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentIndex = 0;
+        let autoSlideInterval;
+
+        function updateCarousel() {
+            // Remove active class from all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+
+            // Apply smooth transition
+            carousel.style.transition = 'transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1)';
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            // Add active class to current slide
+            slides[currentIndex].classList.add('active');
+
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+        }
+
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+
+        if (slides.length > 1) {
+            // Initialize first slide as active
+            slides[0].classList.add('active');
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+                resetAutoSlide();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+                resetAutoSlide();
+            });
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                    resetAutoSlide();
+                });
+            });
+
+            // Start auto-slide
+            startAutoSlide();
+
+            // Pause on hover
+            const heroCarousel = document.querySelector('.hero-carousel');
+            heroCarousel.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
+            heroCarousel.addEventListener('mouseleave', startAutoSlide);
+        }
+
+        // FAQ functionality
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                item.classList.toggle('active');
+
+                // Close other open items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Simple animation for itinerary items
+        document.querySelectorAll('.itinerary-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = `all 0.5s ease ${index * 0.2}s`;
+
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+            }, 100);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.08)';
+            }
+        });
+    </script>
+</body>
+</html>

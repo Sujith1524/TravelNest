@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register as Vendor | Tour Packages</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Modern Professional Navigation Bar */
+        :root {
+            --nav-primary: #4361ee;
+            --nav-primary-dark: #3a56d4;
+            --nav-white: #ffffff;
+            --nav-light-gray: #f5f7ff;
+            --nav-dark: #1a1a2e;
+            --nav-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 3rem;
+            background: var(--nav-white);
+            box-shadow: var(--nav-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            color: var(--nav-primary);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--nav-dark);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .logo-text span {
+            color: var(--nav-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link-primary {
+            background: var(--nav-primary);
+            color: var(--nav-white);
+            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
+        }
+
+        .nav-link-primary:hover {
+            background: var(--nav-primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(67, 97, 238, 0.4);
+        }
+
+        .nav-link-secondary {
+            color: var(--nav-primary);
+            border: 2px solid var(--nav-primary);
+        }
+
+        .nav-link-secondary:hover {
+            background: rgba(67, 97, 238, 0.1);
+        }
+
+        /* Registration Page Styles */
+        :root {
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --secondary: #3f37c9;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4bb543;
+            --error: #ff3333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Dual Container Layout */
+        .dual-container {
+            display: flex;
+            min-height: 80vh;
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            box-shadow: var(--box-shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: white;
+        }
+
+        /* Form Section */
+        .form-section {
+            flex: 1;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            flex: 1;
+            padding: 4rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .card {
+            max-width: 100%;
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        form p {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="tel"],
+        select,
+        textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+            outline: none;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #666;
+        }
+
+        .login-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* Benefit Item Styling */
+        .benefit-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.75rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .benefit-item h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: white;
+        }
+
+        .benefit-item p {
+            color: rgba(255,255,255,0.9);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .alert {
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .alert-success {
+            background-color: rgba(75, 181, 67, 0.2);
+            color: var(--success);
+            border: 1px solid rgba(75, 181, 67, 0.3);
+        }
+
+        .alert-error {
+            background-color: rgba(255, 51, 51, 0.1);
+            color: var(--error);
+            border: 1px solid rgba(255, 51, 51, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .dual-container {
+                flex-direction: column;
+                width: 95%;
+            }
+
+            .form-section, .benefits-section {
+                padding: 2rem;
+            }
+
+            .navbar {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-link {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+     <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[method="post"]');
+    const usernameInput = form.querySelector('input[name="username"]');
+
+    form.addEventListener('submit', function(event) {
+        const username = usernameInput.value.trim();
+
+        if (username.length < 4) {
+            event.preventDefault();
+            alert('Username must be at least 4 characters long.');
+            usernameInput.focus();
+        }
+    });
+});
+
+    </script>
+</head>
+<body>
+    <!-- Beautiful Professional Navigation Bar -->
+    <nav class="navbar">
+        <a href="{% url 'home' %}" class="logo">
+            <i class="fas fa-map-marked-alt logo-icon"></i>
+            <span class="logo-text">Explore<span>Tours</span></span>
+        </a>
+
+        <div class="nav-links">
+            <a href="{% url 'home' %}" class="nav-link nav-link-secondary">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="{% url 'register' %}" class="nav-link nav-link-secondary">
+                <i class="fas fa-user-plus"></i>Register as User
+            </a>
+            <a href="{% url 'login' %}" class="nav-link nav-link-primary">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </div>
+    </nav>
+
+    <div class="dual-container">
+        <!-- Form Section -->
+        <div class="form-section">
+            <div class="card">
+                <h2><i class="fas fa-store"></i> Register as Vendor</h2>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags == 'success' %}alert-success{% else %}alert-error{% endif %}">
+                            <i class="fas {% if message.tags == 'success' %}fa-check-circle{% else %}fa-exclamation-circle{% endif %}"></i>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn">
+                        <i class="fas fa-store"></i> Register as Vendor
+                    </button>
+                </form>
+                <p class="login-link">Already have an account? <a href="{% url 'login' %}">Sign in as vendor</a></p>
+            </div>
+        </div>
+
+        <!-- Benefits Section -->
+        <div class="benefits-section">
+            <div class="benefit-item">
+                <h3><i class="fas fa-crown"></i> Vendor Benefits</h3>
+                <p>Get access to thousands of potential customers looking for unique tour experiences.</p>
+            </div>
+
+            <div class="benefit-item">
+                <h3><i class="fas fa-chart-line"></i> Business Growth</h3>
+                <p>Expand your reach and grow your business with our marketing tools and platform.</p>
+            </div>
+
+            <div class="benefit-item">
+                <h3><i class="fas fa-money-bill-wave"></i> Easy Payments</h3>
+                <p>Receive secure and timely payments for your services with our reliable system.</p>
+            </div>
+
+            <div class="benefit-item">
+                <h3><i class="fas fa-headset"></i> Dedicated Support</h3>
+                <p>Our vendor support team is always ready to help you with any questions or issues.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
